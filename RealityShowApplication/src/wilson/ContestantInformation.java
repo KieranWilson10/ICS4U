@@ -52,14 +52,15 @@ public class ContestantInformation {
 	 */
 	public String getAge() {
 		return birthDate;
-		
+
 	}
 
 	/**
-	 * @param yyyy mm dd
-	 *           
+	 * @param yyyy
+	 *            mm dd
+	 * 
 	 */
-	public void setAge(int yyyy, int mm , int dd) {
+	public void setAge(int yyyy, int mm, int dd) {
 		this.userBirthDate.set(yyyy, mm, dd);
 		this.birthDate = userBirthDate.toString();
 	}
@@ -134,9 +135,33 @@ public class ContestantInformation {
 	/**
 	 * @param postalCode
 	 *            the postalCode to set
+	 * @throws InvalidInputException
 	 */
-	public void setPostalCode(String postalCode) {
+	public void setPostalCode(String postalCode) throws InvalidInputException {
+		if (postalCode.length() > 6) {
+			throw new InvalidInputException("This postal code is too long, please type your 6 digit postal code.");
+		} else if (postalCode.length() < 6) {
+			throw new InvalidInputException("This postal code is too short, please type your 6 digit postal code.");
+		}
+		for (int i = 0; i < 5; i++) {
+			if ((i % 2) == 1) {		    
+             if(!Character.isDigit(postalCode.charAt(i)))
+             {
+            	 throw new InvalidInputException("On character " + i + ", you have inputted a letter.");            	 
+             }
+             
+			}
+			else{
+				if(!Character.isLetter(postalCode.charAt(i))){
+					throw new InvalidInputException("On character" + i + ", you have inputted a number");
+				}
+				
+			}
+		}
 		this.postalCode = postalCode;
+	}
+	
+
 	}
 
 	/**
