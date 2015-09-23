@@ -1,4 +1,5 @@
 
+
 package wilson;
 /**
  * Reality show application
@@ -16,7 +17,7 @@ public class ContestantInformation {
 	private Calendar userBirthDate = new GregorianCalendar();
 
 	public ContestantInformation(String name, String age, String streetNumber, String streetAddress, String city,
-			String province, String postalCode, String phoneNumber, String birthDate) {
+			String province, String postalCode, String phoneNumber, String birthDate) throws InvalidInputException {
 		this.setName(name);
 		this.setBirthDate(birthDate);
 		this.setStreetNumber(streetNumber);
@@ -42,8 +43,16 @@ public class ContestantInformation {
 	/**
 	 * @param name
 	 *            the name to set
+	 * @throws InvalidInputException 
 	 */
-	public void setName(String name) {
+	public void setName(String name) throws InvalidInputException {
+		name = name.toUpperCase();		
+		for(int i = 0; i < name.length(); i++)
+		{
+		 if(!Character.isLetter(name.charAt(i))){
+			 throw new InvalidInputException("Please only enter letters in your name.");
+		 }	
+		}
 		this.name = name;
 	}
 
@@ -91,8 +100,9 @@ public class ContestantInformation {
 	 * @param streeAddresss
 	 *            the streeAddresss to set
 	 */
-	public void setStreetAddress(String streeAddresss) {
-		this.streetAddress = streeAddresss;
+	public void setStreetAddress(String streeAddress) {
+		streetAddress = streetAddress.toUpperCase();
+		this.streetAddress = streeAddress;
 	}
 
 	/**
@@ -105,8 +115,17 @@ public class ContestantInformation {
 	/**
 	 * @param city
 	 *            the city to set
+	 * @throws InvalidInputException 
 	 */
-	public void setCity(String city) {
+	public void setCity(String city) throws InvalidInputException {
+		city = city.toUpperCase();
+		for(int i = 0; i < city.length(); i++)
+		{
+		 if(!Character.isLetter(city.charAt(i))){
+			 throw new InvalidInputException("Please only enter letters for the city you live in.");
+		 }	
+		}
+
 		this.city = city;
 	}
 
@@ -122,6 +141,8 @@ public class ContestantInformation {
 	 *            the province to set
 	 */
 	public void setProvince(String province) {
+		province = province.toUpperCase();
+			
 		this.province = province;
 	}
 
@@ -162,7 +183,7 @@ public class ContestantInformation {
 	}
 	
 
-	}
+	
 
 	/**
 	 * @return the phoneNumber
