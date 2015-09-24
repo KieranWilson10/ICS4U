@@ -13,7 +13,7 @@ import java.util.Calendar;
 import java.util.GregorianCalendar;
 
 public class ContestantInformation {
-	private String name, birthDate, streetNumber, streetAddress, city, province, postalCode, phoneNumber;
+	private String firstName, lastName, birthDate, streetNumber, streetAddress, city, province, postalCode, phoneNumber;
 	private Calendar userBirthDate = new GregorianCalendar();
 
 	public ContestantInformation(String name, String age, String streetNumber, String streetAddress, String city,
@@ -37,7 +37,8 @@ public class ContestantInformation {
 	 * @return the name
 	 */
 	public String getName() {
-		return name;
+		return firstName + lastName;
+		
 	}
 
 	/**
@@ -53,7 +54,7 @@ public class ContestantInformation {
 			 throw new InvalidInputException("Please only enter letters in your name.");
 		 }	
 		}
-		this.name = name;
+		this.firstName = name;
 	}
 
 	/**
@@ -216,9 +217,17 @@ public class ContestantInformation {
 	}
 
 	public String toString() {
-		return (name + " " + birthDate + " " + streetNumber + " " + streetAddress + " " + city + " " + province + " "
+		return (firstName + " " + birthDate + " " + streetNumber + " " + streetAddress + " " + city + " " + province + " "
 				+ postalCode + " " + phoneNumber + " " + birthDate);
 
+	}
+
+	public String getLastName() {
+		return lastName;
+	}
+
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
 	}
 
 }
