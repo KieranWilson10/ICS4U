@@ -137,6 +137,7 @@ public class main {
 				String phoneNumber = Scanner.nextLine();
 
 				contestant1.setName(phoneNumber);
+				
 
 			} catch (InvalidInputException e) {
 				System.out.println(e.getMessage());
