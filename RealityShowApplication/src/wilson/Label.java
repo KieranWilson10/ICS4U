@@ -21,7 +21,7 @@ public class Label {
 	private String nameOutput;
 	private String addressOutput;
 	private String phoneNumberOutput;
-	public Label() {
+	public Label(ContestantInformation ci) {
 		
 		
 	}

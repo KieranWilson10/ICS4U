@@ -50,9 +50,9 @@ public class ContestantInformation {
 		name = name.toUpperCase();		
 		for(int i = 0; i < name.length(); i++)
 		{
-		 if(!Character.isLetter(name.charAt(i))){
+		/* if(!Character.isLetter(name.charAt(i))){
 			 throw new InvalidInputException("Please only enter letters in your name.");
-		 }	
+		 }	*/
 		}
 		this.firstName = name;
 	}
@@ -211,6 +211,7 @@ public class ContestantInformation {
 	/**
 	 * @param birthDate
 	 *            the birthDate to set
+	 * @return 
 	 */
 	public void setBirthDate(String birthDate) {
 		this.birthDate = birthDate;
