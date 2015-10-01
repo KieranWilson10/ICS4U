@@ -50,9 +50,9 @@ public class ContestantInformation {
 		name = name.toUpperCase();		
 		for(int i = 0; i < name.length(); i++)
 		{
-		/* if(!Character.isLetter(name.charAt(i))){
+			if(!Character.isLetter(name.charAt(i))){
 			 throw new InvalidInputException("Please only enter letters in your name.");
-		 }	*/
+		 }
 		}
 		this.firstName = name;
 	}
@@ -85,11 +85,17 @@ public class ContestantInformation {
 	/**
 	 * @param streetNumber
 	 *            the streetNumber to set
+	 * @throws InvalidInputException 
 	 */
-	public void setStreetNumber(String streetNumber) {
+	public void setStreetNumber(String streetNumber) throws InvalidInputException {
+		for(int i = 0; i < streetNumber.length(); i++){
+		if(Character.isDigit(streetNumber.charAt(i)) == false)
+		throw new InvalidInputException("Please enter numbers only.");
+		}
+		
 		this.streetNumber = streetNumber;
+		
 	}
-
 	/**
 	 * @return the streeAddresss
 	 */
@@ -101,9 +107,9 @@ public class ContestantInformation {
 	 * @param streeAddresss
 	 *            the streeAddresss to set
 	 */
-	public void setStreetAddress(String streeAddress) {
+	public void setStreetAddress(String streetAddress)throws InvalidInputException {
 		streetAddress = streetAddress.toUpperCase();
-		this.streetAddress = streeAddress;
+		this.streetAddress = streetAddress;
 	}
 
 	/**
@@ -140,9 +146,13 @@ public class ContestantInformation {
 	/**
 	 * @param province
 	 *            the province to set
+	 * @throws InvalidInputException 
 	 */
-	public void setProvince(String province) {
-		province = province.toUpperCase();
+	public void setProvince(String province) throws InvalidInputException {
+		if(false)
+		{
+			throw new InvalidInputException("Please enter the abriviation of your province.");
+		}
 			
 		this.province = province;
 	}
@@ -196,8 +206,18 @@ public class ContestantInformation {
 	/**
 	 * @param phoneNumber
 	 *            the phoneNumber to set
+	 * @throws InvalidInputException 
 	 */
-	public void setPhoneNumber(String phoneNumber) {
+	public void setPhoneNumber(String phoneNumber) throws InvalidInputException {
+		for(int i = 1; i < phoneNumber.length() ; i++){
+			if(!Character.isDigit(phoneNumber.charAt(i))){
+				throw new InvalidInputException("Please only enter numbers for your phone number.");
+			}
+			
+		}
+		if(phoneNumber.length() > 9){			
+			throw new InvalidInputException("Please only enter the 9 digits for your phone number.");
+		}
 		this.phoneNumber = phoneNumber;
 	}
 
@@ -227,7 +247,7 @@ public class ContestantInformation {
 		return lastName;
 	}
 
-	public void setLastName(String lastName) {
+	public void setLastName(String lastName) throws InvalidInputException{
 		this.lastName = lastName;
 	}
 

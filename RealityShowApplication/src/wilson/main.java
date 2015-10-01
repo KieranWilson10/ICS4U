@@ -48,7 +48,7 @@ public class main {
 				System.out.println("Please enter your last name.");
 				String lastName = Scanner.nextLine();
 
-				contestant1.setName(lastName);
+				contestant1.setLastName(lastName);
 
 			} catch (InvalidInputException e) {
 				System.out.println(e.getMessage());
@@ -56,25 +56,14 @@ public class main {
 			}
 		} while (flag);
 
-		/*do {
-			try {
-				flag = false;
-				System.out.println("Please enter your year of birth");
-				String yyyy = Scanner.nextLine();
-
-			} catch (InvalidInputException e) {
-				System.out.println(e.getMessage());
-				flag = true;
-			}
-		} while (flag);
-*/
+		
 		do {
 			try {
 				flag = false;
 				System.out.println("Please enter your street number.");
 				String streetNumber = Scanner.nextLine();
 
-				contestant1.setName(streetNumber);
+				contestant1.setStreetNumber(streetNumber);
 
 			} catch (InvalidInputException e) {
 				System.out.println(e.getMessage());
@@ -88,7 +77,7 @@ public class main {
 				System.out.println("Please enter your street address.");
 				String streetAddress = Scanner.nextLine();
 
-				contestant1.setName(streetAddress);
+				contestant1.setStreetAddress(streetAddress);
 
 			} catch (InvalidInputException e) {
 				System.out.println(e.getMessage());
@@ -103,7 +92,7 @@ public class main {
 				System.out.println("Please enter your city.");
 				String city = Scanner.nextLine();
 
-				contestant1.setName(city);
+				contestant1.setCity(city);
 
 			} catch (InvalidInputException e) {
 				System.out.println(e.getMessage());
@@ -117,7 +106,7 @@ public class main {
 				System.out.println("Please enter your province.");
 				String province = Scanner.nextLine();
 
-				contestant1.setName(province);
+				contestant1.setProvince(province);
 
 			} catch (InvalidInputException e) {
 				System.out.println(e.getMessage());
@@ -131,7 +120,7 @@ public class main {
 				System.out.println("Please enter your postal code.");
 				String postalCode = Scanner.nextLine();
 
-				contestant1.setName(postalCode);
+				contestant1.setPostalCode(postalCode);
 
 			} catch (InvalidInputException e) {
 				System.out.println(e.getMessage());
@@ -144,9 +133,10 @@ public class main {
 				flag = false;
 
 				System.out.println("Please enter your phone number.");
-				String phoneNumber = Scanner.nextLine();
+				String phoneNumber 
+				= Scanner.nextLine();
 
-				contestant1.setName(phoneNumber);
+				contestant1.setPhoneNumber(phoneNumber);
 
 			} catch (InvalidInputException e) {
 				System.out.println(e.getMessage());
@@ -155,7 +145,7 @@ public class main {
 		} while (flag);
 
 		Label label1 = new Label(contestant1);
-		System.out.println(label1.toString());
+		System.out.print(label1.toString());
 	}
 
 }
