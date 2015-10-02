@@ -27,7 +27,8 @@ public class main {
 		boolean flag = false;
 		ContestantInformation contestant1 = new ContestantInformation();
 		Scanner Scanner = new Scanner(System.in);
-
+		ArrayList <String> contestantHolder = new ArrayList(); 
+		 
 		do {
 			try {
 				flag = false;

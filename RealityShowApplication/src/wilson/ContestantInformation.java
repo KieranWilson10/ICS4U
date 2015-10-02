@@ -15,7 +15,7 @@ import java.util.GregorianCalendar;
 public class ContestantInformation {
 	private String firstName, lastName, birthDate, streetNumber, streetAddress, city, province, postalCode, phoneNumber;
 	private Calendar userBirthDate = new GregorianCalendar();
-
+   
 	public ContestantInformation(String name, String age, String streetNumber, String streetAddress, String city,
 			String province, String postalCode, String phoneNumber, String birthDate) throws InvalidInputException {
 		this.setName(name);
@@ -149,12 +149,29 @@ public class ContestantInformation {
 	 * @throws InvalidInputException 
 	 */
 	public void setProvince(String province) throws InvalidInputException {
-		if(false)
+		province.toUpperCase();
+		if(province == "AB" || province == "ALBERTA")
 		{
-			throw new InvalidInputException("Please enter the abriviation of your province.");
-		}
 			
-		this.province = province;
+		}
+		if(province == "BC" || province == "BRITISHCOLUMBIA" || province == "BRITISH COLUMBIA")
+		{
+		
+		}
+		if(province == "MB" || province == "MANITOBA")
+		{
+		
+		}
+		if(province == "NB" || province == "NEWBRUINSWICK" || province == "NEW BRUINSWICK")
+		{
+		
+		}
+		
+			
+			
+		
+			
+
 	}
 
 	/**
