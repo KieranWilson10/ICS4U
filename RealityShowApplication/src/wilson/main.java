@@ -11,6 +11,7 @@ import java.util.Scanner;
  *
  */
 public class main {
+	
 
 	/**
 	 * 
@@ -23,11 +24,44 @@ public class main {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-
-		boolean flag = false;
-		ContestantInformation contestant1 = new ContestantInformation();
 		Scanner Scanner = new Scanner(System.in);
-		ArrayList <String> contestantHolder = new ArrayList(); 
+		int contestantNumber = 1;
+		ContestantInformation c = new ContestantInformation();
+		ArrayList <ContestantInformation> contestantHolder = new ArrayList<ContestantInformation>();
+		for(int i = 0 ; i < contestantNumber; i++)
+		{			
+			System.out.print("Enter Add New Contestant to add a new entry.");
+			System.out.print("Enter Display Contestant to display the last contestant.");
+			String entry = Scanner.nextLine();
+			switch(entry){
+			case "Add New Contestant":
+				contestantHolder.add(c);
+				addContestantInformation(contestantHolder.get(i));
+				break;
+			case "Display Contestant":
+				System.out.print(contestantHolder.get(i-1));
+				break;
+				
+				
+				
+			case "Exit":
+			return;
+			
+			}
+			
+		
+		
+		
+		
+		
+		}
+	}
+
+	
+	public static void addContestantInformation( ContestantInformation contestant1)
+	{
+		boolean flag = false;
+		Scanner Scanner = new Scanner(System.in);
 		 
 		do {
 			try {
@@ -148,5 +182,8 @@ public class main {
 		Label label1 = new Label(contestant1);
 		System.out.print(label1.toString());
 	}
+
+	
+	
 
 }
