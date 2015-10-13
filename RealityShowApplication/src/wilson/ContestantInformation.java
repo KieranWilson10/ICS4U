@@ -268,4 +268,6 @@ public class ContestantInformation {
 		this.lastName = lastName;
 	}
 
+	
+
 }

@@ -1,3 +1,4 @@
+package wilson;
 import java.util.ArrayList;
 
 public class SequentialSorting {
@@ -36,5 +37,16 @@ public class SequentialSorting {
 			
 		}	
 		
+	}
+	public static void searchObject(ArrayList<ContestantInformation> ci, ContestantInformation a)
+	{
+		
+		for(int i = 0; i < ci.size() -1 ; i++)
+		{
+			if(ci.get(i).getClass().getName().compareTo(a.getClass().getName()) == 0){
+				
+				System.out.print(ci.get(i));
+			}
+		}		
 	}
 }
