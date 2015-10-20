@@ -34,17 +34,24 @@ public class main {
 			System.out.print("Enter Display Contestant to display the last contestant.");
 			String entry = Scanner.nextLine();
 			switch(entry){
-			case "Add New Contestant":
+			case "1":
 				contestantHolder.add(c);
 				addContestantInformation(contestantHolder.get(i));
 				break;
-			case "Display Contestant":
+
+			case "2":
 				System.out.print(contestantHolder.get(i-1));
 				break;
 				
-				
-				
-			case "Exit":
+			case "3":
+				System.out.println("Please enter the first name of the contestant.");
+				String fName = Scanner.nextLine();
+				System.out.println("Please enter the last of the contestant.");
+				String lName = Scanner.nextLine();
+				if(SequentialSorting.searchNames(contestantHolder, fName, lName) == 0){
+					System.out.println("found");
+				}
+			case "4":
 			return;
 			
 			}
@@ -58,6 +65,9 @@ public class main {
 	}
 
 	
+
+	}
+
 	public static void addContestantInformation( ContestantInformation contestant1)
 	{
 		boolean flag = false;

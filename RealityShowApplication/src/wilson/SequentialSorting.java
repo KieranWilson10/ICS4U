@@ -49,4 +49,24 @@ public class SequentialSorting {
 			}
 		}		
 	}
+	
+	public static Integer searchNames(ArrayList<ContestantInformation> ci, String a, String b)
+	{
+	
+		for(int i = 0; i < ci.size() -1 ; i++)
+		{
+			if(b.compareTo(ci.get(i).getLastName()) == 0)
+			{
+				if(b.compareTo(ci.get(i).getName()) == 0)
+				{					
+					return 0;				
+				}				
+			}			
+		}	
+		return -1;
+		
+		
+		
+		
+	}
 }

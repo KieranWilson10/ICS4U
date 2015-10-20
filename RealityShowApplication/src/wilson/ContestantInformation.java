@@ -9,6 +9,7 @@ package wilson;
  *
  */
 
+
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
@@ -267,7 +268,16 @@ public class ContestantInformation {
 	public void setLastName(String lastName) throws InvalidInputException{
 		this.lastName = lastName;
 	}
-
 	
+	public int compareFirstName(ContestantInformation ci )
+	{
+	return this.getName().compareTo(ci.getName());
+		
+	}
+	public int compareLastName(ContestantInformation ci)
+	{
+		return this.getLastName().compareTo(ci.getLastName());		
+		
+	}
 
 }
