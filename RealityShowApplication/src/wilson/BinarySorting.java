@@ -56,7 +56,7 @@ public class BinarySorting {
 
 	}
 
-	public static void sortingObject(ArrayList<ContestantInformation> ci, ContestantInformation a) {
+	public static void searchObject(ArrayList<ContestantInformation> ci, ContestantInformation a) {
 
 		int start = 0;
 		int end = ci.size() - 1;
@@ -78,7 +78,7 @@ public class BinarySorting {
 		}
 	}
 
-	public static void sortingNames(ArrayList<ContestantInformation> ci, String a, String b) {
+	public static void searchNames(ArrayList<ContestantInformation> ci, String a, String b) {
 
 		int start = 0;
 		int end = ci.size() - 1;

@@ -53,7 +53,7 @@ public class main {
 				}
 			case "4":
 			return;
-			
+			 
 			}
 			
 		
@@ -66,7 +66,7 @@ public class main {
 
 	
 
-	}
+	
 
 	public static void addContestantInformation( ContestantInformation contestant1)
 	{
