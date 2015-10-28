@@ -14,14 +14,15 @@ public class Main {
 
 
 
-	private int Solve(int N, int src, int dst, int aux) {
+	private void Solve(int N, int src, int dst, int aux) {
 		
 	    if( N == 0) 
-	      return 0;
+	      return;
 	    else{
 	      Solve(N - 1, src, dst, aux);
 	      
 	      Solve(N - 1, aux, src, dst);
 	    }
+			
 	}
 }
