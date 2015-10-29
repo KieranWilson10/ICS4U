@@ -13,7 +13,8 @@ package wilson;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
-public class ContestantInformation {
+@SuppressWarnings("rawtypes")
+public class ContestantInformation implements Comparable {
 	private String firstName, lastName, birthDate, streetNumber, streetAddress, city, province, postalCode, phoneNumber;
 	private Calendar userBirthDate = new GregorianCalendar();
    
@@ -31,7 +32,15 @@ public class ContestantInformation {
 	}
 
 	public ContestantInformation() {
-
+	  firstName  = "";
+	  lastName = "";
+	  birthDate = "";
+	  streetNumber = "";
+	  streetAddress = "";
+	  city = "";
+	  province = "";
+	  postalCode = "";
+	  phoneNumber = "";
 	}
 
 	/**
@@ -278,6 +287,12 @@ public class ContestantInformation {
 	{
 		return this.getLastName().compareTo(ci.getLastName());		
 		
+	}
+
+	@Override
+	public int compareTo(Object arg0) {
+		ContestantInformation ci = (ContestantInformation)arg0;
+		return 0;
 	}
 
 }

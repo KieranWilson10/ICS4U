@@ -108,4 +108,29 @@ public class BinarySorting {
 			}
 		}
 	}
-}
+	public int binarySearch(ArrayList<String> aL, String target){
+		return binarySearch(aL,target,0,aL.size()-1);
+	}
+    private int binarySearch(ArrayList<String> aL, String target, int begin, int end){
+    	if(begin > end){
+    		return-1;
+    	}
+    	
+    	int mid = (begin+end)/2;
+    	
+    	if(aL.get(mid).compareTo(target) == 0){
+    		return mid;
+    		
+    	}
+    	else if(aL.get(mid).compareTo(target)<0){
+    		return binarySearch(aL,target,mid,end);
+    		
+    	}
+    	else{
+    		return binarySearch(aL,target,mid,end);
+    	}
+    	
+    }
+				
+		
+	}
