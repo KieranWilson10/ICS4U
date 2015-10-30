@@ -7,10 +7,7 @@ public class SequentialSorting {
 		// TODO Auto-generated constructor stub
 	}
 
-	public static void main(String[] args) {
-		
-
-	}
+	
 
 	public static void searchInt(ArrayList <Integer> list, int x)
 	{
@@ -65,8 +62,20 @@ public class SequentialSorting {
 		}	
 		return -1;
 		
+	}
+	public static Integer searchNamesIndex(ArrayList<ContestantInformation> ci , String a, String b){
 		
-		
+		for(int i = 0; i < ci.size() -1 ; i++)
+		{
+			if(b.compareTo(ci.get(i).getLastName()) == 0)
+			{
+				if(b.compareTo(ci.get(i).getName()) == 0)
+				{					
+					return i;				
+				}				
+			}			
+		}	
+		return -1;
 		
 	}
 }

@@ -48,10 +48,33 @@ public class main {
 				String fName = Scanner.nextLine();
 				System.out.println("Please enter the last of the contestant.");
 				String lName = Scanner.nextLine();
-				if(SequentialSorting.searchNames(contestantHolder, fName, lName) == 0){
-					System.out.println("found");
+				if(SequentialSorting.searchNames(contestantHolder, fName, lName) == 0){					
+					int index = SequentialSorting.searchNamesIndex(contestantHolder, fName, lName);
+				    Label contestantLabel = new Label(contestantHolder.get(index));
+				    System.out.println(contestantLabel.toString());
 				}
-			case "4":
+				else{
+					System.out.println("Contestant not found");
+				}
+				break;
+				
+			case"4":
+				System.out.println("Please enter the first name of the contestant.");
+				String dFName = Scanner.nextLine();
+				System.out.println("Please enter the last of the contestant.");
+				String dLName = Scanner.nextLine();
+				if(SequentialSorting.searchNames(contestantHolder, dFName, dLName) == 0){
+					int index = SequentialSorting.searchNamesIndex(contestantHolder, dFName, dLName);
+					contestantHolder.remove(index);
+					System.out.println("Contestant deleted.");
+				}
+				break;
+			case"5":
+				System.out.println("All contestants cleared.");
+				contestantHolder.removeAll(contestantHolder);	
+				break;
+				
+			case "6":
 			return;
 			 
 			}

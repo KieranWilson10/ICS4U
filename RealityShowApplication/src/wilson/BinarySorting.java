@@ -8,10 +8,6 @@ public class BinarySorting {
 		// TODO Auto-generated constructor stub
 	}
 
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
-	}
 
 	public static void searchingInt(ArrayList<Integer> list, int x) {
 
