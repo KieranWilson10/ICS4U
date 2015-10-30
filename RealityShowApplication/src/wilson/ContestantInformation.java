@@ -206,13 +206,13 @@ public class ContestantInformation implements Comparable {
 			if ((i % 2) == 1) {		    
              if(!Character.isDigit(postalCode.charAt(i)))
              {
-            	 throw new InvalidInputException("On character " + i + ", you have inputted a letter.");            	 
+            	 throw new InvalidInputException("On character " + i+1 + ", you have inputted a letter.");            	 
              }
              
 			}
 			else{
 				if(!Character.isLetter(postalCode.charAt(i))){
-					throw new InvalidInputException("On character" + i + ", you have inputted a number");
+					throw new InvalidInputException("On character " + i+1 + ", you have inputted a number");
 				}
 				
 			}
