@@ -159,30 +159,7 @@ public class ContestantInformation implements Comparable {
 	 * @throws InvalidInputException 
 	 */
 	public void setProvince(String province) throws InvalidInputException {
-		province.toUpperCase();
-		if(province == "AB" || province == "ALBERTA")
-		{
-			
 		}
-		if(province == "BC" || province == "BRITISHCOLUMBIA" || province == "BRITISH COLUMBIA")
-		{
-		
-		}
-		if(province == "MB" || province == "MANITOBA")
-		{
-		
-		}
-		if(province == "NB" || province == "NEWBRUINSWICK" || province == "NEW BRUINSWICK")
-		{
-		
-		}
-		
-			
-			
-		
-			
-
-	}
 
 	/**
 	 * @return the postalCode
@@ -242,8 +219,8 @@ public class ContestantInformation implements Comparable {
 			}
 			
 		}
-		if(phoneNumber.length() > 9){			
-			throw new InvalidInputException("Please only enter the 9 digits for your phone number.");
+		if(phoneNumber.length() > 10){			
+			throw new InvalidInputException("Please only enter the 10 digits for your phone number.");
 		}
 		this.phoneNumber = phoneNumber;
 	}
