@@ -4,12 +4,12 @@
 package wilson;
 
 import java.io.BufferedReader;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.PrintStream;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Scanner;
 
 /**
@@ -22,16 +22,18 @@ public class main {
 	 * 
 	 */
 	public main() {
-		// TODO Auto-generated constructor stub
+
 	}
 
 	/**
 	 * @param args
-	 * @throws IOException 
-	 * @throws NumberFormatException 
-	 * @throws InvalidInputException 
+	 * @throws IOException
+	 * @throws NumberFormatException
+	 * @throws InvalidInputException
 	 */
+	@SuppressWarnings("unchecked")
 	public static void main(String[] args) throws NumberFormatException, IOException, InvalidInputException {
+		@SuppressWarnings("resource")
 		Scanner Scanner = new Scanner(System.in);
 		int contestantNumber = 10;
 		ContestantInformation c = new ContestantInformation();
@@ -44,7 +46,8 @@ public class main {
 			System.out.println("Enter 5 to remove all contestants.");
 			System.out.println("Enter 6 to save all contestants.");
 			System.out.println("Enter 7 to load all contestants.");
-			System.out.println("Enter 8 to exit the program.");
+			System.out.println("Enter 8 to sort the program.");
+			System.out.println("Enter 9 to exit the program.");
 			String entry = Scanner.nextLine();
 			switch (entry) {
 			case "1":
@@ -53,7 +56,7 @@ public class main {
 				break;
 
 			case "2":
-				System.out.print(contestantHolder.get(i - 1));
+				System.out.print(contestantHolder.get(contestantHolder.size()-1));
 				break;
 
 			case "3":
@@ -89,7 +92,7 @@ public class main {
 				FileOutputStream fileOutputStream = new FileOutputStream("ContestantInfo.txt");
 				PrintStream fps = new PrintStream(fileOutputStream);
 				fps.print(contestantHolder.size());
-				for(int j = 0; j < contestantHolder.size(); j++){
+				for (int j = 0; j < contestantHolder.size(); j++) {
 					fps.print(contestantHolder.get(i).getName());
 					fps.print(contestantHolder.get(i).getLastName());
 					fps.print(contestantHolder.get(i).getStreetNumber());
@@ -103,8 +106,8 @@ public class main {
 			case "7":
 				BufferedReader fbr = new BufferedReader(new FileReader("ContestantInfo.txt"));
 				int entries = Integer.parseInt(fbr.readLine());
-				
-				for(int k = 0; k < entries; k++){
+
+				for (int k = 0; k < entries; k++) {
 					String fN = fbr.readLine();
 					contestantHolder.get(k).setName(fN);
 					String lN = fbr.readLine();
@@ -122,9 +125,12 @@ public class main {
 					String pN = fbr.readLine();
 					contestantHolder.get(k).setPhoneNumber(pN);
 				}
-				
-				
+				break;
 			case "8":
+				Collections.sort(contestantHolder);
+				break;
+	
+			case "9":
 				return;
 
 			}
@@ -134,6 +140,7 @@ public class main {
 
 	public static void addContestantInformation(ContestantInformation contestant1) {
 		boolean flag = false;
+		@SuppressWarnings("resource")
 		Scanner Scanner = new Scanner(System.in);
 
 		do {
@@ -251,7 +258,7 @@ public class main {
 		} while (flag);
 
 		Label label1 = new Label(contestant1);
-		System.out.print(label1.toString());
+		System.out.println(label1.toString());
 	}
 
 }

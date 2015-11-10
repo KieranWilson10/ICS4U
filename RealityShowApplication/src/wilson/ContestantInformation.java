@@ -1,5 +1,4 @@
 
-
 package wilson;
 /**
  * Reality show application
@@ -9,7 +8,6 @@ package wilson;
  *
  */
 
-
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
@@ -17,7 +15,7 @@ import java.util.GregorianCalendar;
 public class ContestantInformation implements Comparable {
 	private String firstName, lastName, birthDate, streetNumber, streetAddress, city, province, postalCode, phoneNumber;
 	private Calendar userBirthDate = new GregorianCalendar();
-   
+
 	public ContestantInformation(String name, String age, String streetNumber, String streetAddress, String city,
 			String province, String postalCode, String phoneNumber, String birthDate) throws InvalidInputException {
 		this.setName(name);
@@ -32,37 +30,36 @@ public class ContestantInformation implements Comparable {
 	}
 
 	public ContestantInformation() {
-	  firstName  = "";
-	  lastName = "";
-	  birthDate = "";
-	  streetNumber = "";
-	  streetAddress = "";
-	  city = "";
-	  province = "";
-	  postalCode = "";
-	  phoneNumber = "";
+		firstName = "";
+		lastName = "";
+		birthDate = "";
+		streetNumber = "";
+		streetAddress = "";
+		city = "";
+		province = "";
+		postalCode = "";
+		phoneNumber = "";
 	}
 
 	/**
 	 * @return the name
 	 */
 	public String getName() {
-		return firstName + lastName;
-		
+		return firstName;
+
 	}
 
 	/**
 	 * @param name
 	 *            the name to set
-	 * @throws InvalidInputException 
+	 * @throws InvalidInputException
 	 */
 	public void setName(String name) throws InvalidInputException {
-		name = name.toUpperCase();		
-		for(int i = 0; i < name.length(); i++)
-		{
-			if(!Character.isLetter(name.charAt(i))){
-			 throw new InvalidInputException("Please only enter letters in your name.");
-		 }
+		name = name.toUpperCase();
+		for (int i = 0; i < name.length(); i++) {
+			if (!Character.isLetter(name.charAt(i))) {
+				throw new InvalidInputException("Please only enter letters in your name.");
+			}
 		}
 		this.firstName = name;
 	}
@@ -95,17 +92,18 @@ public class ContestantInformation implements Comparable {
 	/**
 	 * @param streetNumber
 	 *            the streetNumber to set
-	 * @throws InvalidInputException 
+	 * @throws InvalidInputException
 	 */
 	public void setStreetNumber(String streetNumber) throws InvalidInputException {
-		for(int i = 0; i < streetNumber.length(); i++){
-		if(Character.isDigit(streetNumber.charAt(i)) == false)
-		throw new InvalidInputException("Please enter numbers only.");
+		for (int i = 0; i < streetNumber.length(); i++) {
+			if (Character.isDigit(streetNumber.charAt(i)) == false)
+				throw new InvalidInputException("Please enter numbers only.");
 		}
-		
+
 		this.streetNumber = streetNumber;
-		
+
 	}
+
 	/**
 	 * @return the streeAddresss
 	 */
@@ -117,7 +115,7 @@ public class ContestantInformation implements Comparable {
 	 * @param streeAddresss
 	 *            the streeAddresss to set
 	 */
-	public void setStreetAddress(String streetAddress)throws InvalidInputException {
+	public void setStreetAddress(String streetAddress) throws InvalidInputException {
 		streetAddress = streetAddress.toUpperCase();
 		this.streetAddress = streetAddress;
 	}
@@ -132,15 +130,14 @@ public class ContestantInformation implements Comparable {
 	/**
 	 * @param city
 	 *            the city to set
-	 * @throws InvalidInputException 
+	 * @throws InvalidInputException
 	 */
 	public void setCity(String city) throws InvalidInputException {
 		city = city.toUpperCase();
-		for(int i = 0; i < city.length(); i++)
-		{
-		 if(!Character.isLetter(city.charAt(i))){
-			 throw new InvalidInputException("Please only enter letters for the city you live in.");
-		 }	
+		for (int i = 0; i < city.length(); i++) {
+			if (!Character.isLetter(city.charAt(i))) {
+				throw new InvalidInputException("Please only enter letters for the city you live in.");
+			}
 		}
 
 		this.city = city;
@@ -156,10 +153,13 @@ public class ContestantInformation implements Comparable {
 	/**
 	 * @param province
 	 *            the province to set
-	 * @throws InvalidInputException 
+	 * @throws InvalidInputException
 	 */
 	public void setProvince(String province) throws InvalidInputException {
+		if( province.equalsIgnoreCase("Ontario") || province.equalsIgnoreCase("ON")){
+		
 		}
+	}
 
 	/**
 	 * @return the postalCode
@@ -180,25 +180,20 @@ public class ContestantInformation implements Comparable {
 			throw new InvalidInputException("This postal code is too short, please type your 6 digit postal code.");
 		}
 		for (int i = 0; i < 5; i++) {
-			if ((i % 2) == 1) {		    
-             if(!Character.isDigit(postalCode.charAt(i)))
-             {
-            	 throw new InvalidInputException("On character " + i+1 + ", you have inputted a letter.");            	 
-             }
-             
-			}
-			else{
-				if(!Character.isLetter(postalCode.charAt(i))){
-					throw new InvalidInputException("On character " + i+1 + ", you have inputted a number");
+			if ((i % 2) == 1) {
+				if (!Character.isDigit(postalCode.charAt(i))) {
+					throw new InvalidInputException("On character " + (i + 1) + ", you have inputted a letter.");
 				}
-				
+
+			} else {
+				if (!Character.isLetter(postalCode.charAt(i))) {
+					throw new InvalidInputException("On character " + (i + 1) + ", you have inputted a number");
+				}
+
 			}
 		}
 		this.postalCode = postalCode;
 	}
-	
-
-	
 
 	/**
 	 * @return the phoneNumber
@@ -210,16 +205,16 @@ public class ContestantInformation implements Comparable {
 	/**
 	 * @param phoneNumber
 	 *            the phoneNumber to set
-	 * @throws InvalidInputException 
+	 * @throws InvalidInputException
 	 */
 	public void setPhoneNumber(String phoneNumber) throws InvalidInputException {
-		for(int i = 1; i < phoneNumber.length() ; i++){
-			if(!Character.isDigit(phoneNumber.charAt(i))){
+		for (int i = 1; i < phoneNumber.length(); i++) {
+			if (!Character.isDigit(phoneNumber.charAt(i))) {
 				throw new InvalidInputException("Please only enter numbers for your phone number.");
 			}
-			
+
 		}
-		if(phoneNumber.length() > 10){			
+		if (phoneNumber.length() > 10) {
 			throw new InvalidInputException("Please only enter the 10 digits for your phone number.");
 		}
 		this.phoneNumber = phoneNumber;
@@ -235,15 +230,15 @@ public class ContestantInformation implements Comparable {
 	/**
 	 * @param birthDate
 	 *            the birthDate to set
-	 * @return 
+	 * @return
 	 */
 	public void setBirthDate(String birthDate) {
 		this.birthDate = birthDate;
 	}
 
 	public String toString() {
-		return (firstName + " " + birthDate + " " + streetNumber + " " + streetAddress + " " + city + " " + province + " "
-				+ postalCode + " " + phoneNumber + " " + birthDate);
+		return (firstName + " " + birthDate + " " + streetNumber + " " + streetAddress + " " + city + " " + province
+				+ " " + postalCode + " " + phoneNumber + " " + birthDate);
 
 	}
 
@@ -251,24 +246,23 @@ public class ContestantInformation implements Comparable {
 		return lastName;
 	}
 
-	public void setLastName(String lastName) throws InvalidInputException{
+	public void setLastName(String lastName) throws InvalidInputException {
 		this.lastName = lastName;
 	}
-	
-	public int compareFirstName(ContestantInformation ci )
-	{
-	return this.getName().compareTo(ci.getName());
-		
+
+	public int compareFirstName(ContestantInformation ci) {
+		return this.getName().compareTo(ci.getName());
+
 	}
-	public int compareLastName(ContestantInformation ci)
-	{
-		return this.getLastName().compareTo(ci.getLastName());		
-		
+
+	public int compareLastName(ContestantInformation ci) {
+		return this.getLastName().compareTo(ci.getLastName());
+
 	}
 
 	@Override
 	public int compareTo(Object arg0) {
-		ContestantInformation ci = (ContestantInformation)arg0;
+		ContestantInformation ci = (ContestantInformation) arg0;
 		return 0;
 	}
 

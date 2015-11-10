@@ -65,7 +65,7 @@ public class SequentialSorting {
 	}
 	public static Integer searchNamesIndex(ArrayList<ContestantInformation> ci , String a, String b){
 		
-		for(int i = 0; i < ci.size() -1 ; i++)
+		for (int i = 0; i < ci.size() -1 ; i++)
 		{
 			if(b.compareTo(ci.get(i).getLastName()) == 0)
 			{
