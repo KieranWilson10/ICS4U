@@ -35,7 +35,7 @@ public class main {
 	public static void main(String[] args) throws NumberFormatException, IOException, InvalidInputException {
 		@SuppressWarnings("resource")
 		Scanner Scanner = new Scanner(System.in);
-		int contestantNumber = 10;
+		int contestantNumber = 100000;
 		ContestantInformation c = new ContestantInformation();
 		ArrayList<ContestantInformation> contestantHolder = new ArrayList<ContestantInformation>();
 		for (int i = 0; i < contestantNumber; i++) {
@@ -49,14 +49,18 @@ public class main {
 			System.out.println("Enter 8 to sort the program.");
 			System.out.println("Enter 9 to exit the program.");
 			String entry = Scanner.nextLine();
+
 			switch (entry) {
 			case "1":
+				int s = 0;
 				contestantHolder.add(c);
-				addContestantInformation(contestantHolder.get(i));
+				addContestantInformation(contestantHolder.get(s));
+				s++;
 				break;
 
 			case "2":
-				System.out.print(contestantHolder.get(contestantHolder.size()-1));
+				Label lbl = new Label(c);
+				System.out.println(lbl.toString());				
 				break;
 
 			case "3":
@@ -134,9 +138,11 @@ public class main {
 				return;
 
 			}
-
 		}
+
 	}
+
+	
 
 	public static void addContestantInformation(ContestantInformation contestant1) {
 		boolean flag = false;

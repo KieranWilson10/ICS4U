@@ -156,8 +156,59 @@ public class ContestantInformation implements Comparable {
 	 * @throws InvalidInputException
 	 */
 	public void setProvince(String province) throws InvalidInputException {
-		if( province.equalsIgnoreCase("Ontario") || province.equalsIgnoreCase("ON")){
-		
+		if( province.equalsIgnoreCase("Alberta") || province.equalsIgnoreCase("AB")){
+			this.province = "AB";
+			}
+			
+		else if( province.equalsIgnoreCase("British Columbia") ||province.equalsIgnoreCase("BritishColumbia")|| province.equalsIgnoreCase("BC")){
+			this.province = "BC";
+			}
+			
+		else if( province.equalsIgnoreCase("Manitoba") || province.equalsIgnoreCase("MB")){
+			this.province = "MB";
+			}
+			
+		else if( province.equalsIgnoreCase("New Brunswick") ||province.equalsIgnoreCase("NewBrunswick") || province.equalsIgnoreCase("NB")){
+			this.province = "NB";
+			}
+			
+		else if( province.equalsIgnoreCase("Newfoundland and Labrador") ||province.equalsIgnoreCase("NewfoundlandandLabrador") || province.equalsIgnoreCase("NL")){
+			this.province = "NL";
+			}
+			
+		else if( province.equalsIgnoreCase("Nova Scotia") || province.equalsIgnoreCase("NS")){
+			this.province = "NS";
+			}
+			
+		else if( province.equalsIgnoreCase("Northwest Territories") || province.equalsIgnoreCase("NorthwestTerritories") ||province.equalsIgnoreCase("NT")){
+			this.province = "NT";
+			}
+			
+		else if( province.equalsIgnoreCase("Nunavut") || province.equalsIgnoreCase("NU")){
+			this.province = "NU";
+			}
+			
+		else if( province.equalsIgnoreCase("Ontario") || province.equalsIgnoreCase("ON")){
+			this.province = "ON";
+			}
+			
+		else if( province.equalsIgnoreCase("Prince Edward Island") || province.equalsIgnoreCase("PrinceEdwardIsland") ||province.equalsIgnoreCase("PE")||province.equalsIgnoreCase("PEI") ){
+			this.province = "PE";
+			}
+			
+		else if( province.equalsIgnoreCase("Quebec") || province.equalsIgnoreCase("Quebec")){
+			this.province = "QC";
+			}
+			
+		else if( province.equalsIgnoreCase("Saskatchewan") || province.equalsIgnoreCase("SK")){
+			this.province = "SK";
+			}
+			
+		else if( province.equalsIgnoreCase("Yukon") || province.equalsIgnoreCase("Yukon")){
+			this.province = "YT";
+			}
+		else{
+			throw new InvalidInputException("Please the province full name or abbreviation.");
 		}
 	}
 
@@ -247,16 +298,22 @@ public class ContestantInformation implements Comparable {
 	}
 
 	public void setLastName(String lastName) throws InvalidInputException {
+		lastName = lastName.toUpperCase();
+		for (int i = 0; i < lastName.length(); i++) {
+			if (!Character.isLetter(lastName.charAt(i))) {
+				throw new InvalidInputException("Please only enter letters in your name.");
+			}
+		}
 		this.lastName = lastName;
 	}
 
 	public int compareFirstName(ContestantInformation ci) {
-		return this.getName().compareTo(ci.getName());
+		return this.getName().compareToIgnoreCase(ci.getName());
 
 	}
 
 	public int compareLastName(ContestantInformation ci) {
-		return this.getLastName().compareTo(ci.getLastName());
+		return this.getLastName().compareToIgnoreCase(ci.getLastName());
 
 	}
 
