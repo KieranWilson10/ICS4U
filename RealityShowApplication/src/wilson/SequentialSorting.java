@@ -50,11 +50,11 @@ public class SequentialSorting {
 	public static Integer searchNames(ArrayList<ContestantInformation> ci, String a, String b)
 	{
 	
-		for(int i = 0; i < ci.size() -1 ; i++)
+		for(int i = 0; i < ci.size() ; i++)
 		{
-			if(b.compareTo(ci.get(i).getLastName()) == 0)
+			if(b.compareToIgnoreCase(ci.get(i).getLastName()) == 0)
 			{
-				if(b.compareTo(ci.get(i).getName()) == 0)
+				if(a.compareToIgnoreCase(ci.get(i).getName()) == 0)
 				{					
 					return 0;				
 				}				
@@ -65,11 +65,11 @@ public class SequentialSorting {
 	}
 	public static Integer searchNamesIndex(ArrayList<ContestantInformation> ci , String a, String b){
 		
-		for (int i = 0; i < ci.size() -1 ; i++)
+		for (int i = 0; i < ci.size() ; i++)
 		{
-			if(b.compareTo(ci.get(i).getLastName()) == 0)
+			if(b.compareToIgnoreCase(ci.get(i).getLastName()) == 0)
 			{
-				if(b.compareTo(ci.get(i).getName()) == 0)
+				if(a.compareToIgnoreCase(ci.get(i).getName()) == 0)
 				{					
 					return i;				
 				}				

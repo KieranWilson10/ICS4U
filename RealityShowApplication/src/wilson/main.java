@@ -26,7 +26,7 @@ public class main {
 	}
 
 	/**
-	 * @param args
+	 * @param args 
 	 * @throws IOException
 	 * @throws NumberFormatException
 	 * @throws InvalidInputException
