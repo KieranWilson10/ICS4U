@@ -8,13 +8,23 @@ package wilson;
  *
  */
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.Calendar;
-import java.util.GregorianCalendar;
+
 
 @SuppressWarnings("rawtypes")
+/**
+ * Declares used variables to store a contestants information
+ * @author Kieran Wilson
+ *
+ */
 public class ContestantInformation implements Comparable {
-	private String firstName, lastName, birthDate, streetNumber, streetAddress, city, province, postalCode, phoneNumber;
-	private Calendar userBirthDate = new GregorianCalendar();
+	private String firstName, lastName, streetNumber, streetAddress, city, province, postalCode, phoneNumber, age;
+
+
 
 	public ContestantInformation(String name, String age, String streetNumber, String streetAddress, String city,
 			String province, String postalCode, String phoneNumber, String birthDate) throws InvalidInputException {
@@ -28,11 +38,13 @@ public class ContestantInformation implements Comparable {
 		this.setPhoneNumber(phoneNumber);
 
 	}
-
+/**
+ * sets all Contestant parameters to blank or null
+ */
 	public ContestantInformation() {
 		firstName = "";
 		lastName = "";
-		birthDate = "";
+		age = "";
 		streetNumber = "";
 		streetAddress = "";
 		city = "";
@@ -42,6 +54,7 @@ public class ContestantInformation implements Comparable {
 	}
 
 	/**
+	 * Returns the name
 	 * @return the name
 	 */
 	public String getName() {
@@ -51,7 +64,7 @@ public class ContestantInformation implements Comparable {
 
 	/**
 	 * @param name
-	 *            the name to set
+	 * Sets the name parameter requirements
 	 * @throws InvalidInputException
 	 */
 	public void setName(String name) throws InvalidInputException {
@@ -65,25 +78,8 @@ public class ContestantInformation implements Comparable {
 	}
 
 	/**
-	 * @return the age
-	 */
-	public String getAge() {
-		return birthDate;
-
-	}
-
-	/**
-	 * @param yyyy
-	 *            mm dd
-	 * 
-	 */
-	public void setAge(int yyyy, int mm, int dd) {
-		this.userBirthDate.set(yyyy, mm, dd);
-		this.birthDate = userBirthDate.toString();
-	}
-
-	/**
 	 * @return the streetNumber
+	 * returns the street number
 	 */
 	public String getStreetNumber() {
 		return streetNumber;
@@ -91,7 +87,7 @@ public class ContestantInformation implements Comparable {
 
 	/**
 	 * @param streetNumber
-	 *            the streetNumber to set
+	 * Sets the streetNumber parameter requirements
 	 * @throws InvalidInputException
 	 */
 	public void setStreetNumber(String streetNumber) throws InvalidInputException {
@@ -105,7 +101,8 @@ public class ContestantInformation implements Comparable {
 	}
 
 	/**
-	 * @return the streeAddresss
+	 * @return the streetAddress
+	 * Returns the streetAddress
 	 */
 	public String getStreetAddress() {
 		return streetAddress;
@@ -113,7 +110,7 @@ public class ContestantInformation implements Comparable {
 
 	/**
 	 * @param streeAddresss
-	 *            the streeAddresss to set
+	 *  Sets the streetAddress parameter requirements
 	 */
 	public void setStreetAddress(String streetAddress) throws InvalidInputException {
 		streetAddress = streetAddress.toUpperCase();
@@ -122,6 +119,7 @@ public class ContestantInformation implements Comparable {
 
 	/**
 	 * @return the city
+	 * Returns the city
 	 */
 	public String getCity() {
 		return city;
@@ -129,7 +127,7 @@ public class ContestantInformation implements Comparable {
 
 	/**
 	 * @param city
-	 *            the city to set
+	 *  Sets the city parameter requirements
 	 * @throws InvalidInputException
 	 */
 	public void setCity(String city) throws InvalidInputException {
@@ -145,6 +143,7 @@ public class ContestantInformation implements Comparable {
 
 	/**
 	 * @return the province
+	 * Returns the province
 	 */
 	public String getProvince() {
 		return province;
@@ -152,68 +151,73 @@ public class ContestantInformation implements Comparable {
 
 	/**
 	 * @param province
-	 *            the province to set
+	 * Sets the province parameter requirements
 	 * @throws InvalidInputException
 	 */
 	public void setProvince(String province) throws InvalidInputException {
-		if( province.equalsIgnoreCase("Alberta") || province.equalsIgnoreCase("AB")){
+		if (province.equalsIgnoreCase("Alberta") || province.equalsIgnoreCase("AB")) {
 			this.province = "AB";
-			}
-			
-		else if( province.equalsIgnoreCase("British Columbia") ||province.equalsIgnoreCase("BritishColumbia")|| province.equalsIgnoreCase("BC")){
+		}
+
+		else if (province.equalsIgnoreCase("British Columbia") || province.equalsIgnoreCase("BritishColumbia")
+				|| province.equalsIgnoreCase("BC")) {
 			this.province = "BC";
-			}
-			
-		else if( province.equalsIgnoreCase("Manitoba") || province.equalsIgnoreCase("MB")){
+		}
+
+		else if (province.equalsIgnoreCase("Manitoba") || province.equalsIgnoreCase("MB")) {
 			this.province = "MB";
-			}
-			
-		else if( province.equalsIgnoreCase("New Brunswick") ||province.equalsIgnoreCase("NewBrunswick") || province.equalsIgnoreCase("NB")){
+		}
+
+		else if (province.equalsIgnoreCase("New Brunswick") || province.equalsIgnoreCase("NewBrunswick")
+				|| province.equalsIgnoreCase("NB")) {
 			this.province = "NB";
-			}
-			
-		else if( province.equalsIgnoreCase("Newfoundland and Labrador") ||province.equalsIgnoreCase("NewfoundlandandLabrador") || province.equalsIgnoreCase("NL")){
+		}
+
+		else if (province.equalsIgnoreCase("Newfoundland and Labrador")
+				|| province.equalsIgnoreCase("NewfoundlandandLabrador") || province.equalsIgnoreCase("NL")) {
 			this.province = "NL";
-			}
-			
-		else if( province.equalsIgnoreCase("Nova Scotia") || province.equalsIgnoreCase("NS")){
+		}
+
+		else if (province.equalsIgnoreCase("Nova Scotia") || province.equalsIgnoreCase("NS")) {
 			this.province = "NS";
-			}
-			
-		else if( province.equalsIgnoreCase("Northwest Territories") || province.equalsIgnoreCase("NorthwestTerritories") ||province.equalsIgnoreCase("NT")){
+		}
+
+		else if (province.equalsIgnoreCase("Northwest Territories") || province.equalsIgnoreCase("NorthwestTerritories")
+				|| province.equalsIgnoreCase("NT")) {
 			this.province = "NT";
-			}
-			
-		else if( province.equalsIgnoreCase("Nunavut") || province.equalsIgnoreCase("NU")){
+		}
+
+		else if (province.equalsIgnoreCase("Nunavut") || province.equalsIgnoreCase("NU")) {
 			this.province = "NU";
-			}
-			
-		else if( province.equalsIgnoreCase("Ontario") || province.equalsIgnoreCase("ON")){
+		}
+
+		else if (province.equalsIgnoreCase("Ontario") || province.equalsIgnoreCase("ON")) {
 			this.province = "ON";
-			}
-			
-		else if( province.equalsIgnoreCase("Prince Edward Island") || province.equalsIgnoreCase("PrinceEdwardIsland") ||province.equalsIgnoreCase("PE")||province.equalsIgnoreCase("PEI") ){
+		}
+
+		else if (province.equalsIgnoreCase("Prince Edward Island") || province.equalsIgnoreCase("PrinceEdwardIsland")
+				|| province.equalsIgnoreCase("PE") || province.equalsIgnoreCase("PEI")) {
 			this.province = "PE";
-			}
-			
-		else if( province.equalsIgnoreCase("Quebec") || province.equalsIgnoreCase("Quebec")){
+		}
+
+		else if (province.equalsIgnoreCase("Quebec") || province.equalsIgnoreCase("Q")) {
 			this.province = "QC";
-			}
-			
-		else if( province.equalsIgnoreCase("Saskatchewan") || province.equalsIgnoreCase("SK")){
+		}
+
+		else if (province.equalsIgnoreCase("Saskatchewan") || province.equalsIgnoreCase("SK")) {
 			this.province = "SK";
-			}
-			
-		else if( province.equalsIgnoreCase("Yukon") || province.equalsIgnoreCase("Yukon")){
+		}
+
+		else if (province.equalsIgnoreCase("Yukon") || province.equalsIgnoreCase("Yukon")) {
 			this.province = "YT";
-			}
-		else{
+		} else {
 			throw new InvalidInputException("Please the province full name or abbreviation.");
 		}
 	}
 
 	/**
 	 * @return the postalCode
+	 * Returns the postalCode
 	 */
 	public String getPostalCode() {
 		return postalCode;
@@ -221,7 +225,7 @@ public class ContestantInformation implements Comparable {
 
 	/**
 	 * @param postalCode
-	 *            the postalCode to set
+	 * Sets the postalCode parameter requirements
 	 * @throws InvalidInputException
 	 */
 	public void setPostalCode(String postalCode) throws InvalidInputException {
@@ -248,6 +252,7 @@ public class ContestantInformation implements Comparable {
 
 	/**
 	 * @return the phoneNumber
+	 * Returns the phoneNumber
 	 */
 	public String getPhoneNumber() {
 		return phoneNumber;
@@ -255,7 +260,7 @@ public class ContestantInformation implements Comparable {
 
 	/**
 	 * @param phoneNumber
-	 *            the phoneNumber to set
+	 *  Sets the phoneNumber parameter requirements
 	 * @throws InvalidInputException
 	 */
 	public void setPhoneNumber(String phoneNumber) throws InvalidInputException {
@@ -273,30 +278,61 @@ public class ContestantInformation implements Comparable {
 
 	/**
 	 * @return the birthDate
+	 * Returns the birthDate
 	 */
 	public String getBirthDate() {
-		return birthDate;
+		return age;
 	}
 
 	/**
 	 * @param birthDate
-	 *            the birthDate to set
-	 * @return
+	 * Sets the birthDate parameter requirements
+	 * @throws InvalidInputException 
 	 */
-	public void setBirthDate(String birthDate) {
-		this.birthDate = birthDate;
+	public void setBirthDate(String birthDate) throws InvalidInputException{
+		try{
+		int userYear = Integer.parseInt(birthDate.substring(0,4));
+		int userMonth = Integer.parseInt(birthDate.substring(5,7));
+		int userDay = Integer.parseInt(birthDate.substring(8,10));
+		Calendar current = Calendar.getInstance();
+		Calendar userBDay = Calendar.getInstance();
+		userBDay.set(userYear, userMonth, userDay);
+			
+		int minAge = current.get(Calendar.YEAR) - userYear - 1;	
+		if(userBDay.after(current)){		
+			throw new Exception();			
+		}
+		LocalDate.of(userYear, userMonth,userDay);
+		
+			if(current.get(Calendar.MONTH) > userMonth || current.get(Calendar.MONTH) == userMonth && current.get(Calendar.DAY_OF_MONTH) >= userDay){
+			minAge++;
+			}
+			this.age = minAge + "";
+		}
+
+		catch(Exception e){
+			throw new InvalidInputException("Please enter it in the yyyy/mm/dd format or input a valid birthdate.");
+		}
+		
 	}
 
 	public String toString() {
-		return (firstName + " " + birthDate + " " + streetNumber + " " + streetAddress + " " + city + " " + province
-				+ " " + postalCode + " " + phoneNumber + " " + birthDate);
+		return (firstName + " " + age + " " + streetNumber + " " + streetAddress + " " + city + " " + province + " "
+				+ postalCode + " " + phoneNumber);
 
 	}
-
+/**
+ * Returns lastName
+ * @return lastName
+ */
 	public String getLastName() {
 		return lastName;
 	}
-
+/**
+ * Sets the name parameter requirements
+ * @param lastName
+ * @throws InvalidInputException
+ */
 	public void setLastName(String lastName) throws InvalidInputException {
 		lastName = lastName.toUpperCase();
 		for (int i = 0; i < lastName.length(); i++) {
@@ -306,18 +342,27 @@ public class ContestantInformation implements Comparable {
 		}
 		this.lastName = lastName;
 	}
-
+/**
+ * Compares firstName
+ * @param ci
+ * @return
+ */
 	public int compareFirstName(ContestantInformation ci) {
 		return this.getName().compareToIgnoreCase(ci.getName());
 
 	}
-
+/**
+ * Compares lastName
+ * @param ci
+ * @return
+ */
 	public int compareLastName(ContestantInformation ci) {
 		return this.getLastName().compareToIgnoreCase(ci.getLastName());
 
 	}
-
-	@Override
+/**
+ * 
+ */
 	public int compareTo(Object arg0) {
 		ContestantInformation ci = (ContestantInformation) arg0;
 		return 0;

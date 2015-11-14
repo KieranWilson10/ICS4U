@@ -29,7 +29,7 @@ public class Label {
 	}
 
 	/**
-	 * 
+	 * Returns formatName
 	 * @return formatName
 	 */
 	private String formatName() {
@@ -41,7 +41,7 @@ public class Label {
 	}
 
 	/**
-	 * 
+	 * Returns formatAddress
 	 * @return formatAddress
 	 */
 	private String formatAddress() {
@@ -57,7 +57,7 @@ public class Label {
 	}
 
 	/**
-	 * 
+	 * Returns formatNumber
 	 * @return formatNumber
 	 */
 	private String formatNumber() {
@@ -68,6 +68,7 @@ public class Label {
 	}
 
 	/**
+	 * Formats the label
 	 * @return formatOutput
 	 */
 	public String toString() {

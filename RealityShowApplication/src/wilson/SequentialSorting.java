@@ -46,15 +46,20 @@ public class SequentialSorting {
 			}
 		}		
 	}
-	
+	/**
+	 * Evaluates if the contestant from arraylist is equal to the inputted contestant name and last name.
+	 * @param ci
+	 * @param a
+	 * @param b
+	 * @return
+	 */
 	public static Integer searchNames(ArrayList<ContestantInformation> ci, String a, String b)
 	{
-	
 		for(int i = 0; i < ci.size() ; i++)
 		{
-			if(b.compareToIgnoreCase(ci.get(i).getLastName()) == 0)
+			if(b.trim().toUpperCase().equals(ci.get(i).getLastName().trim().toUpperCase()))
 			{
-				if(a.compareToIgnoreCase(ci.get(i).getName()) == 0)
+				if(a.trim().toUpperCase().equals(ci.get(i).getName().trim().toUpperCase()))
 				{					
 					return 0;				
 				}				
@@ -63,13 +68,20 @@ public class SequentialSorting {
 		return -1;
 		
 	}
+	/**
+	 * Evaluates the Index at which the contestant is equal to the inputted first and last name.
+	 * @param ci
+	 * @param a
+	 * @param b
+	 * @return
+	 */
 	public static Integer searchNamesIndex(ArrayList<ContestantInformation> ci , String a, String b){
 		
 		for (int i = 0; i < ci.size() ; i++)
 		{
-			if(b.compareToIgnoreCase(ci.get(i).getLastName()) == 0)
+			if(b.trim().toUpperCase().equals(ci.get(i).getLastName().trim().toUpperCase()))
 			{
-				if(a.compareToIgnoreCase(ci.get(i).getName()) == 0)
+				if(a.trim().toUpperCase().equals(ci.get(i).getName().trim().toUpperCase()))
 				{					
 					return i;				
 				}				
