@@ -2,13 +2,20 @@ package wilson;
 
 import java.util.Arrays;
 import java.util.Scanner;
+/**
+ * @author Kieran Wilson
+ * Controls application
+ */
 
 public class SorterMain {
 
 	public SorterMain() {
 		// TODO Auto-generated constructor stub
 	}
-
+/**
+ * Main method
+ * @param args
+ */
 	public static void main(String[] args) {
 
 		Scanner Scanner = new Scanner(System.in);
@@ -54,7 +61,13 @@ public class SorterMain {
 		}
 
 	}
-
+/**
+ * Selection sort algorithm
+ * Runs Selecetion sort 
+ * @param unsorted
+ * @param size
+ * @return sorted(unsorted) int array
+ */
 	public static int[] selectionSort(int[] unsorted, int size) {
 
 		for (int k = 0; k < size - 1; k++) {
@@ -70,7 +83,13 @@ public class SorterMain {
 		}
 		return unsorted;
 	}
-
+/**
+ * Insert sort algorithm
+ * Runs Insert sort
+ * @param unsorted
+ * @param size
+ * @return sorted(unsorted) int array
+ */
 	public static int[] insertSort(int[] unsorted, int size) {
 
 		for (int i = 1; i < unsorted.length; i++) {
@@ -87,7 +106,13 @@ public class SorterMain {
 		return unsorted;
 
 	}
-
+	/**
+	 * Bubble sort algorithm
+	 * Runs Bubble Sort
+	 * @param unsorted
+	 * @param size
+	 * @return sorted(unsorted) int array
+	 */
 	public static int[] bubbleSort(int[] unsorted, int size) {
 		for (int j = 0; j <= unsorted.length - 1; j++) {
 			for (int i = 0; i <= unsorted.length - 1 - i; i++) {
@@ -101,7 +126,11 @@ public class SorterMain {
 		return unsorted;
 
 	}
-
+/**
+ * Recursive quick sort method
+ * @param unsorted
+ * @return sorted(unsorted) int array
+ */
 	public static int[] quickSort(int[] unsorted) {
 		if (unsorted == null || unsorted.length == 0) {
 			return null;
@@ -109,7 +138,13 @@ public class SorterMain {
 		quickSort(unsorted, 0, unsorted.length - 1);
 		return unsorted;
 	}
-
+/**
+ * Quick Sort sorting algorithm
+ * Sorts unsorted list
+ * @param array
+ * @param origLow
+ * @param origHigh
+ */
 	public static void quickSort(int[] array, int origLow, int origHigh) {
 
 		int low = origLow;
@@ -138,12 +173,19 @@ public class SorterMain {
 			quickSort(array, low, origHigh);
 		}
 	}
-	
+	/**
+	 * Merge sort display return
+	 * @param array
+	 * @return sorted(array) int array
+	 */
 	public static int[] mergeSort(int[] array){		
 		mergeSortSplit(array);
 		return array;
 	}
-
+/**
+ * Merge sort splitting recursive splitting algorithm
+ * @param unsorted
+ */
 	public static void mergeSortSplit(int[] unsorted) {
 
 		if (unsorted.length > 1) {		
@@ -156,7 +198,12 @@ public class SorterMain {
 		}		
 
 	}
-
+/**
+ * Merge sort sorting algorithm
+ * @param original
+ * @param array1
+ * @param array2
+ */
 	public static void merge(int original[], int[] array1, int[] array2) {
 		int totalLength = array1.length + array2.length;
 		int i = 0;
@@ -191,7 +238,10 @@ public class SorterMain {
 			}
 		}
 	}
-
+/**
+ * Prints array list passed to it
+ * @param array
+ */
 	public static void printArray(int[] array) {
 
 		for (int i = 0; i < array.length; i++) {
