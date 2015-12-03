@@ -4,6 +4,8 @@ import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Image;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -22,9 +24,10 @@ import javax.swing.JPanel;
  * @author Christina Kemp adapted from Sam Scott
  */
 @SuppressWarnings("serial")
-public class GamePanel extends JPanel implements Runnable {
+public class GamePanel extends JPanel implements Runnable, KeyListener{
 
-
+	int playerX = 50;
+	int playerY = 50;
 	int width = 500;
 	int height = 300;
 
@@ -71,6 +74,7 @@ public class GamePanel extends JPanel implements Runnable {
 					.random() * 256), (int) (Math.random() * 256)));
 		}
 		
+		
 		Thread gameThread = new Thread(this);
 		gameThread.start();
 
@@ -97,7 +101,28 @@ public class GamePanel extends JPanel implements Runnable {
 		for (int i = 0; i < numBalls; i++) {
 			ball[i].draw(g);
 		}
+		g.setColor(Color.CYAN);
+		g.fillRect(playerX, playerY, 5, 5);	
+		
+	}
+	
 
+	@Override
+	public void keyPressed(KeyEvent arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void keyReleased(KeyEvent arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void keyTyped(KeyEvent arg0) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }
