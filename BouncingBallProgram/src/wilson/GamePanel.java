@@ -26,10 +26,11 @@ import javax.swing.JPanel;
 @SuppressWarnings("serial")
 public class GamePanel extends JPanel implements Runnable, KeyListener{
 
-	static int playerX = 50;
-	static int playerY = 50;
+	static int playerX = 450;
+	static int playerY = 200;
 	int width = 500;
 	int height = 300;
+	static int score = 0;
 
 	/**
 	 * The number of balls on the screen.
@@ -67,8 +68,13 @@ public class GamePanel extends JPanel implements Runnable, KeyListener{
 			char key = e.getKeyChar();	
 			
 			for(int i = 0; i < numBalls ;i++ ){
-				if(ball[i].getX()+12 >= playerX  &&  ball[i].getX()-12 <= playerX && ball[i].getY()+12 >= playerY && ball[i].getY()-12 <= playerY ){			
+				if(ball[i].getX()+22 >= playerX  &&  ball[i].getX()-22 <= playerX && ball[i].getY()+22 >= playerY && ball[i].getY()-22 <= playerY ){			
 					ball[i].setX(-90000);
+					for( int j = 0 ; j < numBalls; j++){
+							ball[j].setColor(new Color((int) (Math.random() * 256), (int) (Math
+							.random() * 256), (int) (Math.random() * 256)));
+					}
+					score = score +1;
 				}
 			}
 			
@@ -140,7 +146,7 @@ public class GamePanel extends JPanel implements Runnable, KeyListener{
 					.random() * 256), (int) (Math.random() * 256)));
 		}
 		
-		
+	
 		Thread gameThread = new Thread(this);
 		gameThread.start();
 
@@ -167,8 +173,13 @@ public class GamePanel extends JPanel implements Runnable, KeyListener{
 		for (int i = 0; i < numBalls; i++) {
 			ball[i].draw(g);
 		}
-		g.setColor(Color.CYAN);
-		g.fillRect(playerX, playerY, 25, 25);	
+		g.setColor(Color.BLACK);
+		g.fillRect(playerX, playerY, 40, 40);
+		String scoreString = "Balls Collected - " + score + " / " + numBalls;
+		g.drawString(scoreString,20, 20);
+		if(score == 0){
+			g.drawString("You Win", 200, 150);
+		}
 		
 	}
 
