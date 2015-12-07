@@ -26,15 +26,15 @@ import javax.swing.JPanel;
 @SuppressWarnings("serial")
 public class GamePanel extends JPanel implements Runnable, KeyListener{
 
-	int playerX = 50;
-	int playerY = 50;
+	static int playerX = 50;
+	static int playerY = 50;
 	int width = 500;
 	int height = 300;
 
 	/**
 	 * The number of balls on the screen.
 	 */
-	final int numBalls = 50;
+	final static int numBalls = 50;
 	/**
 	 * The pause between repainting (should be set for about 30 frames per
 	 * second).
@@ -43,13 +43,13 @@ public class GamePanel extends JPanel implements Runnable, KeyListener{
 	/**
 	 * An array of balls.
 	 */
-	FlashingBall[] ball = new FlashingBall[numBalls];
+	static FlashingBall[] ball = new FlashingBall[numBalls];
 
 	/** main program (entry point) */
 	public static void main(String[] args) {
 
 		// Set up main window (using Swing's Jframe)
-		JFrame frame = new JFrame("Dodgeball");
+		JFrame frame = new JFrame("Squares Vs Circles");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setSize(new Dimension(500, 300));
 		frame.setAutoRequestFocus(false);
@@ -57,6 +57,72 @@ public class GamePanel extends JPanel implements Runnable, KeyListener{
 		Container c = frame.getContentPane();
 		c.add(new GamePanel());
 		frame.pack();
+		
+		
+		
+		KeyListener k = new KeyListener(){
+			
+		@Override
+		public void keyPressed(KeyEvent e) {
+			char key = e.getKeyChar();	
+			
+			for(int i = 0; i < numBalls ;i++ ){
+				if(ball[i].getX()+12 >= playerX  &&  ball[i].getX()-12 <= playerX && ball[i].getY()+12 >= playerY && ball[i].getY()-12 <= playerY ){			
+					ball[i].setX(-90000);
+				}
+			}
+			
+			if(key == 'W' || key == 'w'&& playerY >= 0 && playerY <= 275){
+				playerY = playerY -5;
+				if(playerY <= 0){
+					playerY = 0;
+				}
+				if(playerY >= 275){
+					playerY = 274;
+				}
+			}
+			if(key == 'S' || key == 's'&& playerY >= 0 && playerY <= 275){
+				playerY = playerY +5;
+				if(playerY <= 0){
+					playerY = 0;
+				}
+				if(playerY >= 275){
+					playerY = 274;
+				}
+			}
+			if(key == 'A' || key == 'a' && playerX >= 0 && playerX <= 475){
+				playerX = playerX - 5;
+				if(playerX <= 0){
+					playerX = 0;
+				}
+				if(playerX >= 475){
+					playerX = 474;
+				}
+			}
+			if(key == 'D' || key == 'd' && playerX >= 0 && playerX <= 475){
+				playerX = playerX + 5;
+				if(playerX <= 0){
+					playerX = 0;
+				}
+				if(playerX >= 475){
+					playerX = 474;
+				}
+				
+			}
+		}
+
+		@Override
+		public void keyReleased(KeyEvent e) {
+			// TODO Auto-generated method stub
+			
+		}
+		
+		
+		@Override
+		public void keyTyped(KeyEvent e) {			
+			
+		}
+		};frame.addKeyListener(k);
 
 
 	}
@@ -102,27 +168,27 @@ public class GamePanel extends JPanel implements Runnable, KeyListener{
 			ball[i].draw(g);
 		}
 		g.setColor(Color.CYAN);
-		g.fillRect(playerX, playerY, 5, 5);	
+		g.fillRect(playerX, playerY, 25, 25);	
 		
 	}
-	
 
 	@Override
-	public void keyPressed(KeyEvent arg0) {
+	public void keyPressed(KeyEvent e) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void keyReleased(KeyEvent arg0) {
+	public void keyReleased(KeyEvent e) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void keyTyped(KeyEvent arg0) {
+	public void keyTyped(KeyEvent e) {
 		// TODO Auto-generated method stub
 		
 	}
+
 
 }
