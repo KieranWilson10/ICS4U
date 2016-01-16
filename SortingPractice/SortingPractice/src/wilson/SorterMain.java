@@ -65,8 +65,11 @@ public class SorterMain {
  * Selection sort algorithm
  * Runs Selecetion sort 
  * @param unsorted
+ * Unsorted array 
  * @param size
+ * Size of the array 
  * @return sorted(unsorted) int array
+ * Returns the sorted array
  */
 	public static int[] selectionSort(int[] unsorted, int size) {
 
@@ -87,8 +90,11 @@ public class SorterMain {
  * Insert sort algorithm
  * Runs Insert sort
  * @param unsorted
+ * Unsorted array
  * @param size
+ * Size of the unsorted array
  * @return sorted(unsorted) int array
+ * Return the sorted array
  */
 	public static int[] insertSort(int[] unsorted, int size) {
 
@@ -110,8 +116,11 @@ public class SorterMain {
 	 * Bubble sort algorithm
 	 * Runs Bubble Sort
 	 * @param unsorted
+	 * Unsorted array
 	 * @param size
+	 * Size of the unsorted array
 	 * @return sorted(unsorted) int array
+	 * Return the sorted array
 	 */
 	public static int[] bubbleSort(int[] unsorted, int size) {
 		for (int j = 0; j <= unsorted.length - 1; j++) {
@@ -129,7 +138,9 @@ public class SorterMain {
 /**
  * Recursive quick sort method
  * @param unsorted
+ * Unsorted array
  * @return sorted(unsorted) int array
+ * Return the sorted array
  */
 	public static int[] quickSort(int[] unsorted) {
 		if (unsorted == null || unsorted.length == 0) {
@@ -142,8 +153,11 @@ public class SorterMain {
  * Quick Sort sorting algorithm
  * Sorts unsorted list
  * @param array
+ * Unsorted array
  * @param origLow
+ * Lowest value of the array
  * @param origHigh
+ * Highest value of the array
  */
 	public static void quickSort(int[] array, int origLow, int origHigh) {
 
@@ -176,7 +190,9 @@ public class SorterMain {
 	/**
 	 * Merge sort display return
 	 * @param array
+	 * Unsorted array
 	 * @return sorted(array) int array
+	 * Return the sorted array
 	 */
 	public static int[] mergeSort(int[] array){		
 		mergeSortSplit(array);
@@ -185,6 +201,7 @@ public class SorterMain {
 /**
  * Merge sort splitting recursive splitting algorithm
  * @param unsorted
+ * Unsorted array
  */
 	public static void mergeSortSplit(int[] unsorted) {
 
@@ -201,8 +218,11 @@ public class SorterMain {
 /**
  * Merge sort sorting algorithm
  * @param original
+ * The original array
  * @param array1
+ * Array number 1
  * @param array2
+ * Array number 2
  */
 	public static void merge(int original[], int[] array1, int[] array2) {
 		int totalLength = array1.length + array2.length;
@@ -241,6 +261,7 @@ public class SorterMain {
 /**
  * Prints array list passed to it
  * @param array
+ * Array to be printed
  */
 	public static void printArray(int[] array) {
 
