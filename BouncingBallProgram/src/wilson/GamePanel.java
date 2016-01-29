@@ -26,16 +26,18 @@ import javax.swing.JPanel;
 @SuppressWarnings("serial")
 public class GamePanel extends JPanel implements Runnable, KeyListener{
 
-	static int playerX = 450;
-	static int playerY = 200;
-	int width = 500;
-	int height = 300;
+	static int playerX = 500;
+	static int playerY = 300;
+	int width = 1000;
+	int height = 600;
 	static int score = 0;
-
+	static int lives = 3;
+	final private static int GAURD_BALLS = 5;
+	
 	/**
 	 * The number of balls on the screen.
 	 */
-	final static int numBalls = 50;
+	final static int numBalls = 100;
 	/**
 	 * The pause between repainting (should be set for about 30 frames per
 	 * second).
@@ -45,6 +47,7 @@ public class GamePanel extends JPanel implements Runnable, KeyListener{
 	 * An array of balls.
 	 */
 	static FlashingBall[] ball = new FlashingBall[numBalls];
+	static GaurdBalls[] guardBall = new GaurdBalls[GAURD_BALLS];
 
 	/** main program (entry point) */
 	public static void main(String[] args) {
@@ -52,7 +55,7 @@ public class GamePanel extends JPanel implements Runnable, KeyListener{
 		// Set up main window (using Swing's Jframe)
 		JFrame frame = new JFrame("Squares Vs Circles");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setSize(new Dimension(500, 300));
+		frame.setSize(new Dimension(1000, 300));
 		frame.setAutoRequestFocus(false);
 		frame.setVisible(true);
 		Container c = frame.getContentPane();
@@ -62,7 +65,11 @@ public class GamePanel extends JPanel implements Runnable, KeyListener{
 		
 		
 		KeyListener k = new KeyListener(){
-			
+		
+		/**
+		 * Gets input from the user when a key is pressed, if the key is pressed collision is enabled.
+		 * The collision works for the player along the walls and agianst the other balls.
+		 */
 		@Override
 		public void keyPressed(KeyEvent e) {
 			char key = e.getKeyChar();	
@@ -77,41 +84,53 @@ public class GamePanel extends JPanel implements Runnable, KeyListener{
 					score = score +1;
 				}
 			}
+			for(int i = 0; i < guardBall.length ;i++ ){
+				if(guardBall[i].getX()+75 >= playerX  &&  guardBall[i].getX()-75 <= playerX && guardBall[i].getY()+75 >= playerY && guardBall[i].getY()-75 <= playerY ){			
+					lives--;
+					for( int j = 0 ; j < guardBall.length; j++){
+							playerX = 50;
+							playerY = 500;
+							guardBall[j].setColor(new Color((int) (Math.random() * 256), (int) (Math
+							.random() * 256), (int) (Math.random() * 256)));
+					}
+					score = score +1;
+				}
+			}
 			
-			if(key == 'W' || key == 'w'&& playerY >= 0 && playerY <= 275){
+			if(key == 'W' || key == 'w'&& playerY >= 0 && playerY <= 575){
 				playerY = playerY -5;
 				if(playerY <= 0){
 					playerY = 0;
 				}
-				if(playerY >= 275){
-					playerY = 274;
+				if(playerY >= 575){
+					playerY = 574;
 				}
 			}
-			if(key == 'S' || key == 's'&& playerY >= 0 && playerY <= 275){
+			if(key == 'S' || key == 's'&& playerY >= 0 && playerY <= 575){
 				playerY = playerY +5;
 				if(playerY <= 0){
 					playerY = 0;
 				}
-				if(playerY >= 275){
-					playerY = 274;
+				if(playerY >= 575){
+					playerY = 574;
 				}
 			}
-			if(key == 'A' || key == 'a' && playerX >= 0 && playerX <= 475){
+			if(key == 'A' || key == 'a' && playerX >= 0 && playerX <= 975){
 				playerX = playerX - 5;
 				if(playerX <= 0){
 					playerX = 0;
 				}
-				if(playerX >= 475){
-					playerX = 474;
+				if(playerX >= 975){
+					playerX = 974;
 				}
 			}
-			if(key == 'D' || key == 'd' && playerX >= 0 && playerX <= 475){
+			if(key == 'D' || key == 'd' && playerX >= 0 && playerX <= 975){
 				playerX = playerX + 5;
 				if(playerX <= 0){
 					playerX = 0;
 				}
-				if(playerX >= 475){
-					playerX = 474;
+				if(playerX >= 975){
+					playerX = 974;
 				}
 				
 			}
@@ -145,11 +164,18 @@ public class GamePanel extends JPanel implements Runnable, KeyListener{
 			ball[i].setColor(new Color((int) (Math.random() * 256), (int) (Math
 					.random() * 256), (int) (Math.random() * 256)));
 		}
-		
+		for (int i = 0; i < guardBall.length; i++) {
+			guardBall[i] = new GaurdBalls(Math.random() * 1000, Math.random()* 600, 0, width, 0, height);
+			guardBall[i].setXSpeed(Math.random()*4);
+			guardBall[i].setYSpeed(Math.random()*4);
+			guardBall[i].setColor(new Color((int) (Math.random() * 256), (int) (Math
+					.random() * 256), (int) (Math.random() * 256)));
+			
+		}
 	
 		Thread gameThread = new Thread(this);
 		gameThread.start();
-
+		
 	}
 
 	/**
@@ -158,6 +184,7 @@ public class GamePanel extends JPanel implements Runnable, KeyListener{
 	public void run() {
 		while (true) {
 			repaint();
+			
 			try {
 				Thread.sleep(pauseDuration);
 			} catch (InterruptedException e) {
@@ -173,12 +200,20 @@ public class GamePanel extends JPanel implements Runnable, KeyListener{
 		for (int i = 0; i < numBalls; i++) {
 			ball[i].draw(g);
 		}
+		for (int i = 0; i < guardBall.length; i++) {
+			guardBall[i].draw(g);
+		}
 		g.setColor(Color.BLACK);
 		g.fillRect(playerX, playerY, 40, 40);
 		String scoreString = "Balls Collected - " + score + " / " + numBalls;
 		g.drawString(scoreString,20, 20);
-		if(score == 0){
+		String liveString = "Lives Remaining " + lives + " / 3";
+		g.drawString(liveString, 800, 20);
+		if(score == numBalls){
 			g.drawString("You Win", 200, 150);
+		}
+		if(lives <= 0){
+			 System.exit(0);
 		}
 		
 	}

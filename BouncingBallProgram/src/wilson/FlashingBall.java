@@ -1,8 +1,6 @@
 package wilson;
-
 import java.awt.Color;
 import java.awt.Graphics;
-
 
 /**
  * This class implements a flashing ball. Feel free to change this, implement a
