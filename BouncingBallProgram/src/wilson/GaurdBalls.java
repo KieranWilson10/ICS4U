@@ -13,13 +13,21 @@ public class GaurdBalls extends MovingObject {
 	 */
 	private int radius;
 	
-
+	/**
+	 * This class initializes all of the variables needed to create the guard ball class.
+	 * @param x
+	 * @param y
+	 * @param left
+	 * @param right
+	 * @param top
+	 * @param bottom
+	 */
 	public GaurdBalls(double x, double y, int left, int right, int top, int bottom) {
 		super(x, y, left - 75, right + 75, top -75, bottom + 75);
 		radius = 75;
 	}
 	/**
-	 * Draws the guard balls.
+	 * This method draws the guard balls.
 	 */
 	@Override
 	public void draw(Graphics g) {

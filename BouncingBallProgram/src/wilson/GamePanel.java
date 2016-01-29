@@ -32,6 +32,10 @@ public class GamePanel extends JPanel implements Runnable, KeyListener{
 	int height = 600;
 	static int score = 0;
 	static int lives = 3;
+	
+	/**
+	 * The number of guardBalls
+	 */
 	final private static int GAURD_BALLS = 5;
 	
 	/**
@@ -68,7 +72,7 @@ public class GamePanel extends JPanel implements Runnable, KeyListener{
 		
 		/**
 		 * Gets input from the user when a key is pressed, if the key is pressed collision is enabled.
-		 * The collision works for the player along the walls and agianst the other balls.
+		 * The collision works for the player along the walls and against the other balls.
 		 */
 		@Override
 		public void keyPressed(KeyEvent e) {
@@ -151,7 +155,9 @@ public class GamePanel extends JPanel implements Runnable, KeyListener{
 
 
 	}
-
+	/**
+	 * This where the balls are created with the randomized stats for colour and speed.
+	 */
 	public GamePanel(){
 		// Start the ball bouncing (in its own thread)
 		this.setPreferredSize(new Dimension(width, height));
@@ -194,6 +200,7 @@ public class GamePanel extends JPanel implements Runnable, KeyListener{
 
 	/**
 	 * Clears the screen and paints the balls.
+	 * Displays the lives and balls remaining.
 	 */
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
