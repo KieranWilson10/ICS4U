@@ -3,8 +3,9 @@ package wilson;
 import java.util.Arrays;
 import java.util.Scanner;
 /**
+ * This program sorts arrays of numbers using one of 5 types of sorting methods.
  * @author Kieran Wilson
- * Controls application
+ * 
  */
 
 public class SorterMain {
