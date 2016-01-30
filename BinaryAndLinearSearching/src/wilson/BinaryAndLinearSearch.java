@@ -7,7 +7,6 @@ import java.util.Scanner;
  * This class uses both linear and binary search types for all of the data types listed above.
  * @author Kieran Wilson
  * 
- *
  */
 public class BinaryAndLinearSearch {
 	//Declaration of all of the arrays used for testing
