@@ -6,6 +6,7 @@ import java.util.Scanner;
  * This class can handle Strings, int and double and the user is able to identify which method they use.
  * This class uses both linear and binary search types for all of the data types listed above.
  * @author Kieran Wilson
+ * 
  *
  */
 public class BinaryAndLinearSearch {
