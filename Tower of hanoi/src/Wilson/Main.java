@@ -1,5 +1,8 @@
 package Wilson;
-
+/**
+ * This class utilizes a recursive method Solve to complete the Hanoi towers puzzle while giving an output to allow the user to follow.
+ * @author Kieran Wilson
+ */
 public class Main {
 
 	public Main() {
