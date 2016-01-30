@@ -8,6 +8,7 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 /**
@@ -55,7 +56,7 @@ public class GamePanel extends JPanel implements Runnable, KeyListener{
 
 	/** main program (entry point) */
 	public static void main(String[] args) {
-
+		
 		// Set up main window (using Swing's Jframe)
 		JFrame frame = new JFrame("Squares Vs Circles");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -65,9 +66,10 @@ public class GamePanel extends JPanel implements Runnable, KeyListener{
 		Container c = frame.getContentPane();
 		c.add(new GamePanel());
 		frame.pack();
-		
-		
-		
+		//Shows a instruction message when the game loads in
+		JOptionPane.showMessageDialog(null,"Use the W,A,S and D key to move around and collect all of the flashing balls!\n Dont collide with the big balls or three strikes and you are out :)!"
+				+ "\n Just a hint, the big balls wont catch you if you stop moving!","Intructions",JOptionPane.WARNING_MESSAGE);
+		//Declares a new key listener
 		KeyListener k = new KeyListener(){
 		
 		/**
@@ -77,7 +79,7 @@ public class GamePanel extends JPanel implements Runnable, KeyListener{
 		@Override
 		public void keyPressed(KeyEvent e) {
 			char key = e.getKeyChar();	
-			
+			//Small ball collision, moves the balls off screen when in contact with the player while key listener is active
 			for(int i = 0; i < numBalls ;i++ ){
 				if(ball[i].getX()+22 >= playerX  &&  ball[i].getX()-22 <= playerX && ball[i].getY()+22 >= playerY && ball[i].getY()-22 <= playerY ){			
 					ball[i].setX(-90000);
@@ -88,6 +90,7 @@ public class GamePanel extends JPanel implements Runnable, KeyListener{
 					score = score +1;
 				}
 			}
+			//Large ball collision that moves the users controlled square when collided with large balls, collision only active while key listener is
 			for(int i = 0; i < guardBall.length ;i++ ){
 				if(guardBall[i].getX()+75 >= playerX  &&  guardBall[i].getX()-75 <= playerX && guardBall[i].getY()+75 >= playerY && guardBall[i].getY()-75 <= playerY ){			
 					lives--;
@@ -100,7 +103,7 @@ public class GamePanel extends JPanel implements Runnable, KeyListener{
 					score = score +1;
 				}
 			}
-			
+			//Key listener W moves the users square upwards on the screen
 			if(key == 'W' || key == 'w'&& playerY >= 0 && playerY <= 575){
 				playerY = playerY -5;
 				if(playerY <= 0){
@@ -110,6 +113,7 @@ public class GamePanel extends JPanel implements Runnable, KeyListener{
 					playerY = 574;
 				}
 			}
+			//Key listener S moves the users square downwards on the screen
 			if(key == 'S' || key == 's'&& playerY >= 0 && playerY <= 575){
 				playerY = playerY +5;
 				if(playerY <= 0){
@@ -119,6 +123,7 @@ public class GamePanel extends JPanel implements Runnable, KeyListener{
 					playerY = 574;
 				}
 			}
+			//Key listener A moves the users square left on the screen
 			if(key == 'A' || key == 'a' && playerX >= 0 && playerX <= 975){
 				playerX = playerX - 5;
 				if(playerX <= 0){
@@ -128,6 +133,7 @@ public class GamePanel extends JPanel implements Runnable, KeyListener{
 					playerX = 974;
 				}
 			}
+			//Key listener D moves the users square right on the screen
 			if(key == 'D' || key == 'd' && playerX >= 0 && playerX <= 975){
 				playerX = playerX + 5;
 				if(playerX <= 0){
@@ -162,7 +168,7 @@ public class GamePanel extends JPanel implements Runnable, KeyListener{
 		// Start the ball bouncing (in its own thread)
 		this.setPreferredSize(new Dimension(width, height));
 		this.setBackground(Color.WHITE);
-		
+		//Creates all of the edible balls with random colour and speed values
 		for (int i = 0; i < numBalls; i++) {
 			ball[i] = new FlashingBall(50, 50, 0, width, 0, height);
 			ball[i].setXSpeed(Math.random() * 16-8);
@@ -170,6 +176,7 @@ public class GamePanel extends JPanel implements Runnable, KeyListener{
 			ball[i].setColor(new Color((int) (Math.random() * 256), (int) (Math
 					.random() * 256), (int) (Math.random() * 256)));
 		}
+		//Creates all of the guard balls with random colour and speed values
 		for (int i = 0; i < guardBall.length; i++) {
 			guardBall[i] = new GaurdBalls(Math.random() * 1000, Math.random()* 600, 0, width, 0, height);
 			guardBall[i].setXSpeed(Math.random()*4);
@@ -204,21 +211,27 @@ public class GamePanel extends JPanel implements Runnable, KeyListener{
 	 */
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
+		//Draws both types of balls
 		for (int i = 0; i < numBalls; i++) {
 			ball[i].draw(g);
 		}
 		for (int i = 0; i < guardBall.length; i++) {
 			guardBall[i].draw(g);
 		}
+		//Sets the values for the users character
 		g.setColor(Color.BLACK);
 		g.fillRect(playerX, playerY, 40, 40);
+		//Displays the score on top of the screen
 		String scoreString = "Balls Collected - " + score + " / " + numBalls;
 		g.drawString(scoreString,20, 20);
+		//Displays the lives on top of the screen
 		String liveString = "Lives Remaining " + lives + " / 3";
 		g.drawString(liveString, 800, 20);
+		//Displays a winners screen when all the balls are collected
 		if(score == numBalls){
 			g.drawString("You Win", 200, 150);
 		}
+		//Closes the game when you lose all of your lives
 		if(lives <= 0){
 			 System.exit(0);
 		}
